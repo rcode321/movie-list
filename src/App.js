@@ -2,7 +2,7 @@ import "./App.css";
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 
-import Movies from "./movies.jsx";
+import Movies from "./component/movies";
 
 class App extends Component {
   render() {
