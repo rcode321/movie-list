@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+
 import { getMovies } from "../services/fakeMovieService";
 import { paginate } from "../utils/paginate";
+
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 
