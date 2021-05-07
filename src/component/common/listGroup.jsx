@@ -1,12 +1,12 @@
 import React from "react";
 
-const Listgroup = (props) => {
+const ListGroup = (props) => {
   const {
     items,
     textProperty,
     valueProperty,
-    onItemSelect,
     selectedItem,
+    onItemSelect,
   } = props;
 
   return (
@@ -30,9 +30,9 @@ const Listgroup = (props) => {
   );
 };
 
-Listgroup.defaultProps = {
+ListGroup.defaultProps = {
   textProperty: "name",
   valueProperty: "_id",
 };
 
-export default Listgroup;
+export default ListGroup;
