@@ -10,6 +10,7 @@ import NavBar from "./component/navBar";
 import Rentals from "./component/rentals";
 import NotFound from "./component/notFound";
 import MovieForm from "./component/movieForm";
+import LoginForm from "./component/loginForm";
 
 class App extends Component {
    render() {
@@ -17,15 +18,15 @@ class App extends Component {
          <div>
             <Container fluid="sm">
                <NavBar />
-
                <Switch>
+                  <Route path="/login" component={LoginForm} />
                   <Route path="/movies/:id" component={MovieForm} />
-                  <Route path="/movies" render={(props) => <Movies {...props} />} />
+                  <Route path="/movies" component={Movies} />
                   <Route path="/customers" component={Customers} />
                   <Route path="/rentals" component={Rentals} />
-                  <Redirect from="/movies" to="/" />
                   <Route path="/not-found" component={NotFound} />
-                  <Route path="/" exact component={Movies} />
+
+                  <Redirect from="/" exact to="/movies" />
                   <Redirect to="/not-found" />
                </Switch>
             </Container>

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import TableHeader from "./tableHeader";
 import TableBody from "./tableBody";
