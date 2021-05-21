@@ -3,5 +3,7 @@
         "markdown"
     ],
     "editor.formatOnSave": true,
-    "emmet.syntaxProfiles": {}
+    "emmet.syntaxProfiles": {},
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true
 }
