@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import _ from "lodash";
 
-import { getMovies } from "../services/fakeMovieService";
+import { Link } from "react-router-dom";
+
+import { deleteMovie, getMovies } from "../services/fakeMovieService";
 import { getGenres } from "../services/fakeGenreService";
 import { paginate } from "../utils/paginate";
 
@@ -26,9 +28,11 @@ class Movies extends Component {
 	handleDelete = (movie) => {
 		console.log(movie);
 		const movies = this.state.movies.filter(
-			(movee) => movee._id !== movie._id
+			(movieList) => movieList._id !== movie._id
 		);
+
 		this.setState({ movies });
+		deleteMovie(movie._id);
 	};
 
 	handleLike = (movie) => {
@@ -97,6 +101,10 @@ class Movies extends Component {
 					/>
 				</div>
 				<div className="col">
+					<Link className="btn btn-primary" to="/movies/new">
+						New Movie
+					</Link>
+
 					<p>Showing {totalCount} movies in the database</p>
 					<Moviestable
 						movies={movies}

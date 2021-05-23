@@ -11,7 +11,6 @@ import Rentals from "./component/rentals";
 import NotFound from "./component/notFound";
 import MovieForm from "./component/movieForm";
 import LoginForm from "./component/loginForm";
-
 import RegisterForm from "./component/registerForm";
 
 class App extends Component {
