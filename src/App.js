@@ -1,8 +1,9 @@
 import "./App.css";
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-
 import Container from "react-bootstrap/Container";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Movies from "./component/movies";
 import Customers from "./component/customers";
@@ -18,6 +19,7 @@ class App extends Component {
 		return (
 			<div>
 				<Container fluid="sm">
+					<ToastContainer />
 					<NavBar />
 					<Switch>
 						<Route path="/register" component={RegisterForm} />
