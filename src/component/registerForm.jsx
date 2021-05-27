@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
 import { register } from "../services/userService";
+import auth from "../services/authService";
 
 class RegisterForm extends Form {
 	state = {
@@ -20,10 +21,15 @@ class RegisterForm extends Form {
 		// in order catch error in a server
 		// should wrap in a try catch block
 		try {
-			await register(this.state.data);
+			const response = await register(this.state.data);
+			auth.loginWithJwt(response.headers["x-auth-token"]);
+			// this.props.history.push("/");
+			// Full re render and the app.js component life cycle will a new JWT
+			window.location = "/";
+			console.log(response);
 			console.log("Submitted");
 		} catch (err) {
-			if (err.response && err.response === 400) {
+			if (err.response && err.response.status === 400) {
 				const errors = { ...this.state.errors };
 				errors.username = err.response.data;
 				this.setState({ errors });

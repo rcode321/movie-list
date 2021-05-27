@@ -1,9 +1,9 @@
-import "./App.css";
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import auth from "./services/authService";
 
 import Movies from "./component/movies";
 import Customers from "./component/customers";
@@ -13,17 +13,27 @@ import NotFound from "./component/notFound";
 import MovieForm from "./component/movieForm";
 import LoginForm from "./component/loginForm";
 import RegisterForm from "./component/registerForm";
+import Logout from "./component/logout";
+import "./App.css";
 
 class App extends Component {
+	state = {};
+
+	componentDidMount() {
+		const user = auth.getCurrentUser();
+		this.setState({ user });
+	}
+
 	render() {
 		return (
 			<div>
 				<Container fluid="sm">
 					<ToastContainer />
-					<NavBar />
+					<NavBar user={this.state.user} />
 					<Switch>
 						<Route path="/register" component={RegisterForm} />
 						<Route path="/login" component={LoginForm} />
+						<Route path="/logout" component={Logout} />
 						<Route path="/movies/:id" component={MovieForm} />
 						<Route path="/movies" component={Movies} />
 						<Route path="/customers" component={Customers} />
